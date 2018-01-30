@@ -13,23 +13,22 @@ function initColorPicker() {
 	setColorPickerEventListeners(colorBox, rgb, colorPickers);
 }
 
-function setColorPickerEventListeners(colorBox, rgb, pickerElements) {
+function setColorPickerEventListeners(element, colors, pickerElements) {
 	let pickerLen = pickerElements.length;
 	for(let i = 0; i < pickerLen; i++) {
 		pickerElements[i].addEventListener('change', () => {
-			console.log("Red value: ", rgb.red.value);
-			let red = rgb.red.value;
-			let green = rgb.green.value;
-			let blue = rgb.blue.value;
-			setBoxBGColor(colorBox, red, green, blue);
+			let red = colors.red.value;
+			let green = colors.green.value;
+			let blue = colors.blue.value;
+			setElementBGColor(element, red, green, blue);
 			setDisplayValues(red, green, blue);
 		});
 	}
 }
 
-function setBoxBGColor(colorBox, red, green, blue) {
+function setElementBGColor(element, red, green, blue) {
 	rgbVal = [red, green, blue].join(',');
-	colorBox.style.backgroundColor = "rgb(" + rgbVal + ")";
+	element.style.backgroundColor = "rgb(" + rgbVal + ")";
 }
 
 function setDisplayValues(red, green, blue) {
